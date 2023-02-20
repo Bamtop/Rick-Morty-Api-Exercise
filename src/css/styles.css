@@ -1,0 +1,46 @@
+/* Add a black background color to the top navigation */
+.header{
+    background-color:#04AA6D;
+    text-align:center;
+}
+main{
+    display: grid;
+    grid-template-rows:auto;
+    grid-template-columns: 25% auto;
+    grid-column-gap:0.4rem ;
+    margin-bottom:1rem;
+}
+
+aside{
+    background: cornflowerblue;
+    border: black solid 0.1rem;
+    padding: 1rem;
+    border-radius: 10%;
+}
+
+div.content{
+    background: darkkhaki;
+    padding: 1rem;
+    border: black solid 0.1rem;
+}
+
+div.content-bar{
+    display: flex;
+    flex-direction: column;
+}
+
+div.content{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap:0.4rem;
+    grid-row-gap: 0.4rem;
+    border: black solid 0.1rem;
+
+}
+
+footer{
+    background: blanchedalmond;
+    padding: 5rem;
+    text-align: center;
+}
+
