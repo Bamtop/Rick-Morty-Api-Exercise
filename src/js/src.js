@@ -1,44 +1,69 @@
 
 const browser = document.getElementById("search");
 const content = document.getElementsByClassName('content')[0];
-const button = document.getElementsByClassName("search-button")[0];
+const searchButton = document.getElementsByClassName("search-button")[0];
 const searchInput = document.getElementById("search");
-const processChange = debounce((value) =>{
-    fetchDataAndCreateCard();
-});
+const status = document.getElementById("Status");
+const gender = document.getElementById("Gender");
+const species = document.getElementById("Species");
+const nextButton = document.getElementsByClassName("next-button")[0];
+const prevButton = document.getElementsByClassName("prev-button")[0];
+let isPrev;
+let isNext;
+let prevPage ='';
+let nextPage ='';
+
+//api call
 const fetchDataAndCreateCard = () => {
         while (content.hasChildNodes()){
         content.removeChild(content.lastChild);
     }
-    fetch(`https://rickandmortyapi.com/api/character/?name=${browser.value}`)
+    let uri=`https://rickandmortyapi.com/api/character/?name=${browser.value}&status=${status.value}&gender=${gender.value}&species=${species.value}`
+
+    if(isPrev){
+        uri=prevPage;
+
+    }else if (isNext){
+        uri = nextPage;
+    }
+    fetch(uri)
         .then(res => res.json())
-        .then(data => create(data));
+        .then(data => {
+            create(data);
+            setPrevAndNext(data);
+        });
+
+
 };
 
+function setPrevAndNext(data){
+    nextPage  = data['info']['next'];
+    prevPage= data['info']['prev'];
 
-const create = (tableData) => {
-    tableData['results'].forEach(data => {
-        const main = document.querySelector("content");
+}
+//create funtion data to card
+const create = (characterData) => {
+    let characterDataInfo =characterData['results']
+    characterDataInfo.forEach(data => {
+
         const card = document.createRange().createContextualFragment(/*html*/`
    <div class="card">
-    <img src=${data.image} alt="Avatar" style="width:100%">
-       <div class="container">
+    <img class="image-card" src=${data.image} alt='${data.name}'>
+       <article class="container">
         <h4><b>${data.name}</b></h4>
         <p>${data.status}</p>
         <p>${data.species}</p>
         <p>${data.type}</p>
         
-        </div>
+        </article>
     </div>
     
     `)
         content.append(card);
     });
-
-
-
 }
 
+//debounce funtion
 function debounce(func, wait = 300) {
     let timeout;
     return function (...args) {
@@ -46,10 +71,25 @@ function debounce(func, wait = 300) {
         timeout = setTimeout(() => func.apply(this, args), wait);
     };
 }
+const processChange = debounce((value) =>{
+    fetchDataAndCreateCard();
+});
 searchInput.addEventListener("keyup", (e) => {
     processChange(e.target.value);
 });
+nextButton.addEventListener('click',() =>{
+    isNext = true;
+    fetchDataAndCreateCard();
+    isNext = false;
 
+});
+prevButton.addEventListener('click',()=>{
+    isPrev = true;
+    fetchDataAndCreateCard();
+    isPrev = false;
+});
 
-
-button.addEventListener('click', fetchDataAndCreateCard);
+searchButton.addEventListener('click', fetchDataAndCreateCard);
+status.addEventListener("change", fetchDataAndCreateCard);
+gender.addEventListener("change", fetchDataAndCreateCard);
+species.addEventListener("change", fetchDataAndCreateCard);
