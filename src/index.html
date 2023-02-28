@@ -19,10 +19,19 @@
 <main>
     <aside class="aside-bar">
         <div class="content-bar">
-        <h2>Search Bar</h2>
-        <input id="search" type="text" placeholder="Search..">
-        <button class="search-button">submit</button>
-        <h2>Filters</h2>
+        <div class="search-icon">
+        <img class="icon" src="images/search-icon.png" alt="I am Jerry">
+        </div>
+        <div class="search-input-control">
+            <input id="search" type="valid" required="">
+            <label>
+                <span style="transition-delay:0ms">S</span><span style="transition-delay:50ms">e</span><span style="transition-delay:100ms">a</span><span style="transition-delay:150ms">r</span><span style="transition-delay:200ms">c</span><span style="transition-delay:250ms">h</span><span style="transition-delay:300ms">.</span><span style="transition-delay:350ms">.</span><span style="transition-delay:400ms">.</span>
+            </label>
+        </div>
+        <button class="search-button">Search</button>
+
+            <span class="filter-letter"><h2>Filters</h2></span>
+
             <label for="Gender">Gender</label>
             <select name="Gender" id="Gender">
                 <option value="">---</option>
@@ -52,7 +61,7 @@
         </div>
 
     </aside>
-    <div class="content">
+    <section class="content">
 
 
 
@@ -61,14 +70,21 @@
 
 
 
-    </div>
+    </section>
     <div class="separator">
 
     </div>
 
-    <div class="buttons">
-        <button class="prev-button">Prueba back</button>
-        <button class="next-button">Prueba next</button>
+    <div class="buttons-prev-next">
+        <button class="prev-button">
+            <img class="prev-image" src="images/prev-icon.png">
+            <span><b>Pag Anterior</b></span>
+        </button>
+        
+        <button class="next-button">
+            <img class="next-image" src="images/next-icon.png" >
+            <span><b>Pag Siguiente</b></span>
+        </button>
     </div>
 </main>
 

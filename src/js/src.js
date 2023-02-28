@@ -8,6 +8,7 @@ const gender = document.getElementById("Gender");
 const species = document.getElementById("Species");
 const nextButton = document.getElementsByClassName("next-button")[0];
 const prevButton = document.getElementsByClassName("prev-button")[0];
+
 let isPrev;
 let isNext;
 let prevPage ='';
@@ -93,3 +94,12 @@ searchButton.addEventListener('click', fetchDataAndCreateCard);
 status.addEventListener("change", fetchDataAndCreateCard);
 gender.addEventListener("change", fetchDataAndCreateCard);
 species.addEventListener("change", fetchDataAndCreateCard);
+browser.addEventListener('input',()=>{
+    const icon = document.getElementsByClassName("icon")[0];
+    icon.classList.add("spin");
+})
+
+browser.addEventListener('blur',()=>{
+    const icon = document.getElementsByClassName("icon")[0];
+    icon.classList.remove("spin");
+})
