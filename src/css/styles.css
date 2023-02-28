@@ -246,6 +246,7 @@ div.content-bar{
 section.content{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
     grid-column-gap:1rem;
     grid-row-gap: 0.8rem;
     border: black solid 0.1rem;
@@ -253,23 +254,33 @@ section.content{
 }
 
 .card {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     padding: 1rem;
     border-radius: 2.5rem;
     background: palegoldenrod;
     border: #04AA6D ridge 0.4rem;
     transition: .5s;
+    grid-template-areas:
+    "img"
+    "article";
 }
 
+img.image-card{
+    grid-area: img;
+    width: 100%;
+    border-radius: 2.5rem;
+}
+.container{
+    grid-area: article;
+
+
+}
 .card:hover{
     transform: scale(1.15);
 
 }
-img.image-card{
-    border-radius: 2.5rem;
-}
+
 
 div.buttons-prev-next{
     display: flex;
@@ -317,8 +328,28 @@ img.next-image{
 
 
 footer{
-    background: blanchedalmond;
+    background: #04AA6D;
     padding: 5rem;
     text-align: center;
 }
 
+@media only screen and (max-width: 768px) {
+    section.content {
+        grid-template-columns: 1fr;
+    }
+}
+
+/*
+@media only screen and (max-width: 768px) {
+    main{
+        display: grid;
+        grid-template-rows:20% auto;
+        grid-template-columns: auto;
+        grid-column-gap:0.4rem ;
+        margin-bottom:1rem;
+
+    }
+
+}
+
+ */
