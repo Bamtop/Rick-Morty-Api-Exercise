@@ -27,22 +27,33 @@ const fetchDataAndCreateCard = () => {
     }else if (isNext){
         uri = nextPage;
     }
+
+
     fetch(uri)
         .then(res => res.json())
         .then(data => {
             create(data);
             setPrevAndNext(data);
         });
-
-
 };
 
 function setPrevAndNext(data){
     nextPage  = data['info']['next'];
     prevPage= data['info']['prev'];
+    if(nextPage == null){
+        nextButton.style.display="none";
+    }else{
+        nextButton.style.display="block";
+    }
+    if (prevPage ==null){
+        prevButton.style.display="none";
+
+    }else{
+        prevButton.style.display="block";
+    }
 
 }
-//create funtion data to card
+//create function data to card
 const create = (characterData) => {
     let characterDataInfo =characterData['results']
     characterDataInfo.forEach(data => {
@@ -64,7 +75,7 @@ const create = (characterData) => {
     });
 }
 
-//debounce funtion
+//debounce function
 function debounce(func, wait = 300) {
     let timeout;
     return function (...args) {

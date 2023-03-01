@@ -32,7 +32,6 @@ main{
 }
 
 aside{
-
     padding: 1rem;
 
 }
@@ -339,8 +338,8 @@ footer{
     }
 }
 
-/*
-@media only screen and (max-width: 768px) {
+
+@media only screen and (max-width: 750px) {
     main{
         display: grid;
         grid-template-rows:20% auto;
@@ -349,7 +348,10 @@ footer{
         margin-bottom:1rem;
 
     }
+    aside{
+        height: fit-content;
+
+    }
 
 }
 
- */
