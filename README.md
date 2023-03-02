@@ -3,12 +3,12 @@
 
 This challenger consist in consuming a Rick & Morty Api.
 
-### This Web Page is maked with:
+### This Web Page is made with:
   - HTML.
   - SCSS.
   - JAVASCRIPT.
   
-  ### Requirements from this challenger:
+  ### Requirements from this challenge:
   - Create a basic layout using semantic elements. (article, aside, header...etc).✅
   - The layout has to be responsive (mobile+desktop version, use grid+flex for the results).✅
   - Use a CSS preprocessor like (Sass/SCSS).✅
