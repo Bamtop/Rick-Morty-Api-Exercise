@@ -352,7 +352,7 @@ footer{
 @media only screen and (max-width: 500px) {
   main {
     display: grid;
-    grid-template-rows:20% auto;
+    grid-template-rows:auto auto;
     grid-template-columns: auto;
     grid-column-gap: 0.4rem;
     margin-bottom: 1rem;
@@ -364,6 +364,18 @@ footer{
   }
   section.content {
     grid-template-columns: 1fr;
+  }
+
+  .search-input-control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .search-input-control label{
+    position: relative;
+    top: 0.5rem;
+    left: -11.5rem;
+
   }
 }
 
