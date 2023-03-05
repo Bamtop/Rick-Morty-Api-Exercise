@@ -8,6 +8,9 @@ const gender = document.getElementById("Gender");
 const species = document.getElementById("Species");
 const nextButton = document.getElementsByClassName("next-button")[0];
 const prevButton = document.getElementsByClassName("prev-button")[0];
+const columnButton = document.getElementsByClassName("change-column")[0];
+let isChanged = false;
+
 
 let isPrev;
 let isNext;
@@ -63,9 +66,9 @@ const create = (characterData) => {
     <img class="image-card" src=${data.image} alt='${data.name}'>
        <article class="container">
         <h4><b>${data.name}</b></h4>
-        <p>${data.status}</p>
-        <p>${data.species}</p>
-        <p>${data.type}</p>
+        <p class="card_status">Status:  ${data.status}</p>
+        <p class="card_species">Specie:  ${data.species}</p>
+        <p class="card_type">Type:  ${data.type}</p>
         
         </article>
     </div>
@@ -106,11 +109,31 @@ status.addEventListener("change", fetchDataAndCreateCard);
 gender.addEventListener("change", fetchDataAndCreateCard);
 species.addEventListener("change", fetchDataAndCreateCard);
 browser.addEventListener('input',()=>{
-    const icon = document.getElementsByClassName("icon")[0];
+    let icon = document.getElementsByClassName("icon")[0];
     icon.classList.add("spin");
 })
 
 browser.addEventListener('blur',()=>{
-    const icon = document.getElementsByClassName("icon")[0];
+    let icon = document.getElementsByClassName("icon")[0];
     icon.classList.remove("spin");
 })
+
+columnButton.addEventListener('click', ()=>{
+    if(isChanged === false){
+        content.style.gridTemplateColumns="1fr 1fr 1fr 1fr 1fr";
+        isChanged = true;
+
+
+    }else{
+        content.style.gridTemplateColumns= "1fr 1fr 1fr";
+        isChanged=false;
+
+    }
+
+
+
+
+
+})
+fetchDataAndCreateCard();
+
